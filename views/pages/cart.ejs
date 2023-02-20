@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width-device-width, initial-scale=1.0">
+        <title>Main Page</title>
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
+        <link rel="stylesheet" href="css/style.css">
+        <script src="js/script.js"></script>
+
+    </head>
+
+    <body>
+
+        <section id="header">
+            <a href="/"><img src="img/logo.png"></a>
+
+           
+            <div>
+                <ul id="navbar">    
+                    <li><a href="/">Home</a></li>
+                    <li><a href="shop">Shop</a></li>
+                    <li><a href="blog">Blog</a></li>
+                    <!-- <li><a href="about">About</a></li> -->
+                    <% if(user){ %>
+                        <li><a href="/logout">Logout</a></li>
+                        <li><a href="history">History</a></li>
+                        <li><a href="upload">Upload</a></li>
+                        <li><a readonly><%= user.name %></a></li>
+                    <% }else{ %>
+                    <li><a href="login">Sign-In</a></li>
+                    <% } %>
+                    <li id="lg-bag"><a class="active" readonly href="cart"><i class="far fa-shopping-basket"></i></li>
+                        <a href ="#" id="close"></a>
+                </ul>
+            </div>
+        </section>
+     
+        <section id="cart" class="section-p1">
+            <table width="100%">
+                <th>
+                    <tr>
+                        <td>Remove</td>
+                        <td>img</td>
+                        <td>products</td>
+                        <td>price</td>
+                        <td>Quantity</td>
+                        <td>Subtotal</td>
+                    </tr>
+                </th>
+                <% if(cart) { %>
+                <tbody>
+                    <% cart.forEach(function(item) { %>
+                    <tr>
+                        <form method="post" action="/remove_product">
+                        <input type="hidden" name="id" value="<%= item.id %>">
+                        <td><button class="normal" type="submit"><i class="far fa-times-circle"></i></button></td>
+                        </form>
+                        <td><img src="img/<%= item.img %>" alt=""></td>
+                        <td><%= item.name %></td>
+                        <td>$<%= item.cost %></td>
+                        <td style="text-align:center;">
+                            <form method="post" action="/edit_product_quantity">
+                                <input type="hidden" value="<%= item.id %>" name="id">
+                                <input style="font-size: 14px;
+                                font-weight: 600;
+                                padding: 12px 18px;
+                                color: #000000;
+                                background-color: #ffffff;
+                                border-radius: 4px;
+                                cursor: pointer;
+                                border: none;
+                                outline: none;
+                                transition: 0.2s ease;" type="submit" value="-" name="decrease_product_quantity">
+                                <input type="number" value="<%= item.quantity %>" min="1" style="width:40px;height:40px;text-align: center;" name="quantity" readonly>
+                                <input type="submit" style="font-size: 14px;
+                                font-weight: 600;
+                                padding: 12px 18px;
+                                color: #000000;
+                                background-color: #ffffff;
+                                border-radius: 4px;
+                                cursor: pointer;
+                                border: none;
+                                outline: none;
+                                transition: 0.2s ease;" value="+" name="increase_product_quantity">
+                            </form>
+                        </td>
+                        <td>$<%= item.cost * item.quantity %></td>
+                    </tr>
+                    <% }) %>
+                    <% } %>
+                </tbody>
+            </table>
+        </section>
+        <section id="cart-add" class="section-p1">
+            <div id="coupon">
+                <h3>Apply coupon</h3>
+                <div>
+                    <form action="/discount" method="post">
+                    <input type="text" placeholder="Enter your coupon" id="coupon1" name="code" pattern="[1-9][0-9]{9}" required>
+                    <button type="submit" class="normal" id="coupon2">Apply</button>
+                </form>
+                </div>
+            </div>
+            <div id="subtotal">
+                <h3>Cart Totals</h3>
+                <table>
+                    <tr>
+                        <td>Shipping</td>
+                        <td>Free</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Total</strong></td>
+                        <td><strong>$<%= total %></strong></td>
+                    </tr>
+                </table>
+                <button class="normal"><a href="checkout" style="text-decoration: none; color:#ffffff;">Proceed to checkout</a></button>
+            </div>
+        </section>
+        <footer class="section-p1">
+            <div class="col">
+                <img class="logo" src="img/logo.png" alt="">
+                <h4>Contact</h4>
+                <p><strong>Address :</strong> VIT Vellore, Vellore, Tamil Nadu</p>
+                <p><strong>Phone :</strong> +91 95 2608 3012 / +01 222 365</p>
+                <p><strong>Hours :</strong>10:00 - 18:00, Mon - Sat</p>
+                <div class="follow">
+                    <h4>Follow Us</h4>
+                    <div class="icon">
+                        <i class="fab fa-facebook"></i>
+                        <i class="fab fa-twitter"></i>
+                        <i class="fab fa-instagram"></i>
+                        <i class="fab fa-pinterest"></i>
+                        <i class="fab fa-youtube"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <h4>About</h4>
+                <a href="#">About Us</a>
+                <a href="#">Delivery Information</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms & Conditions</a>
+                <a href="#">Contact Us</a>
+                <a href="#">Help</a>
+            </div>
+
+            <div class="col">
+                <h4>My Account</h4>
+                <a href="#">Sign In</a>
+                <a href="#">View Cart</a>
+                <a href="#">My Wishlist</a>
+                <a href="#">Track My Order</a>
+            </div>
+
+            <div class="copyright">
+                <p>© 2022, VIT Vellore - IWP Project</p>
+            </div>
+        </footer>
+
+        <script>
+            var but=document.getElementById("coupon2");
+            var para=document.getElementById("error");
+            but.onclick=function(){
+                var val=but.previousElementSibling.previousElementSibling.value;
+                len=val.length;
+                if(len!=10){
+                    para.innerHTML = "Invalid Coupon Number";
+                }
+                else{
+                    para.innerHTML = "Coupon Applied";
+                }
+            };
+        </script>
+
+    </body>
+
+</html>

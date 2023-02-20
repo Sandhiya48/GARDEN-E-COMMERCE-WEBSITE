@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width-device-width, initial-scale=1.0">
+        <title>Main Page</title>
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
+        <link rel="stylesheet" href="css/style.css">
+        <script src="script/script.js"></script>
+
+    </head>
+
+    <body>
+
+        <section id="header">
+            <a href="/"><img src="img/logo.png"></a>
+
+            <div>
+                <ul id="navbar">
+                    
+                    <li><a class="active" readonly href="/">Home</a></li>
+                    <li><a href="shop">Shop</a></li>
+                    <li><a href="blog">Blog</a></li>
+                    <!-- <li><a href="about">About</a></li> -->
+                    <% if(user){ %>
+                    <li><a href="/logout">Logout</a></li>
+                    <li><a href="history">History</a></li>
+                    <li><a href="upload">Upload</a></li>
+                    <li><a readonly><%= user.name %></a></li>
+                    <% }else{ %>
+                    <li><a href="login">Sign-In</a></li>
+                    <% } %>
+                    <li><a href="cart"><i class="far fa-shopping-basket"></i></a></li>
+                    
+                </ul>
+            </div>
+        </section>
+
+        <section id="hero">
+            <h4>Trade in offer</h4>
+            <h2>Super value deals</h2>
+            <h1>on all products</h1>
+            <p>save more with coupons & up to 70% off!</p>
+            <button onclick="send()">Shop Now</button>
+        </section>
+        
+        <section id="feature" class="section-p1">
+            <div class="fe-box">
+                <img src="img/fe1.jpg" alt="" class="img">
+                <h6>Plant Supply Services</h6>
+            </div>
+            <div class="fe-box">
+                <img src="img/fe2.jpg" alt="" class="img">
+                <h6>Nursery Services</h6>
+            </div>
+            <div class="fe-box">
+                <img src="img/fe3.jpg" alt="" class="img">
+                <h6>Garden Maintainence</h6>
+            </div>
+            <div class="fe-box">
+                <img src="img/fe4.jpg" alt="" class="img">
+                <h6>Garden Designing</h6>
+            </div>
+            
+        </section>
+
+        <section id="product1" class="section-p1">
+            <h2>Featured Products</h2>
+            <p>New Winter Collection of Plants</p>
+            <div class="pro-container">
+                <% result.forEach(function(item){ %>
+                <% if (item.featured==1){ %>
+                <div class="pro">
+                    <img src="img/<%= item.img1 %>" alt="">
+                    <div class="des">
+                        <span><%= item.Seller %></span>
+                        <h5><%= item.name %></h5>
+                        <div class="star">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h4>$<%= item.cost %></h4>
+                    </div>
+                    <form id="sub" action="/sproduct" method="post">
+                        <input type="hidden" name="id" value="<%= item.item_id %>">
+                        <input type="hidden" name="name" value="<%= item.name %>">
+                        <input type="hidden" name="desc"value="<%= item.description %>">
+                        <input type="hidden" name="img1" value="<%= item.img1 %>">
+                        <input type="hidden" name="img2" value="<%= item.img2 %>">
+                        <input type="hidden" name="img3" value="<%= item.img3 %>">
+                        <input type="hidden" name="img4" value="<%= item.img4 %>">
+                        <input type="hidden" name="cost" value="<%= item.cost %>">
+                        <input type="hidden" name="seller" value="<%= item.Seller %>">
+                        <input type="hidden" name="category" value="<%= item.category %>">
+                        <input type="hidden" name="qty" value="<%= item.qty %>">
+                        <button type="submit"><a href="#"><i class="fal fa-shopping-cart cart"></i></a></button>
+                    </form>
+                </div>
+                <% }}) %>
+            </div>
+        </section>
+
+        <section id="banner" class="section-m1">
+            <h4>Designing Services</h4>
+            <h2>Free <span>One-Time Service</span> with purchases above $1000</h2>
+            <button class="normal">Shop Now</button>
+        </section>
+
+        <section id="product1" class="section-p1">
+            <h2>New Arrivals</h2>
+            <p>New Winter Collection of Plants</p>
+            <div class="pro-container">
+                <% result.forEach(function(item){ %>
+                    <% if (item.new==1){ %>
+                    <div class="pro">
+                        <img src="img/<%= item.img1 %>" alt="">
+                        <div class="des">
+                            <span><%= item.Seller %></span>
+                            <h5><%= item.name %></h5>
+                            <div class="star">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <h4>$<%= item.cost %></h4>
+                        </div>
+                        <form id="sub" action="/sproduct" method="post">
+                            <input type="hidden" name="id" value="<%= item.item_id %>">
+                            <input type="hidden" name="name" value="<%= item.name %>">
+                            <input type="hidden" name="desc"value="<%= item.description %>">
+                            <input type="hidden" name="img1" value="<%= item.img1 %>">
+                            <input type="hidden" name="img2" value="<%= item.img2 %>">
+                            <input type="hidden" name="img3" value="<%= item.img3 %>">
+                            <input type="hidden" name="img4" value="<%= item.img4 %>">
+                            <input type="hidden" name="cost" value="<%= item.cost %>">
+                            <input type="hidden" name="seller" value="<%= item.Seller %>">
+                            <input type="hidden" name="category" value="<%= item.category %>">
+                            <input type="hidden" name="qty" value="<%= item.qty %>">
+                            <button type="submit"><a href="#"><i class="fal fa-shopping-cart cart"></i></a></button>
+                        </form>
+                    </div>
+                    <% }}) %>
+            </div>
+        </section>
+
+        <section id="sm-banner" class="section-p1">
+            <div class="banner-box">
+                <h4>Amazing Deals</h4>
+                <h2>Buy 1 Get 1 Free</h2>
+                <span>The Best Deals At Best Prices At Your Fingertips</span>
+                <button class="white">Learn more</button>
+            </div>
+            <div class="banner-box banner-box2">
+                <h4>Fall/Winter</h4>
+                <h2>Up-Coming Season</h2>
+                <span>The Best Deals At Best Prices At Your Fingertips</span>
+                <button class="white">Collection</button>
+            </div>
+        </section>
+
+        <section id="banner3">
+            <div class="banner-box">
+                <h2>Seasonal Sale</h2>
+                <h3>Winter-Collection 25% off</h3>
+            </div>
+            <div class="banner-box banner-box2">
+                <h2>New Plant Collection</h2>
+                <h3>Christmas 2022</h3>
+            </div>
+            <div class="banner-box banner-box3">
+                <h2>Services</h2>
+                <h3>Professional Designers for your Garden</h3>
+            </div>
+        </section>
+
+        <section id="newsletter" class="section-p1 section-m1">
+            <div class="newstext">
+                <h4>Sign Up for NewsLetters</h4>
+                <p>Get E-mail updates about our latest shop and <span>special offers.</span></p>
+            </div>
+            <div class="form">
+                <input type="text" placeholder="Your E-mail address">
+                <button class="normal">Sign Up</button>
+            </div>
+        </section>
+
+        <footer class="section-p1">
+            <div class="col">
+                <img class="logo" src="img/logo.png" alt="">
+                <h4>Contact</h4>
+                <p><strong>Address :</strong> VIT Vellore, Vellore, Tamil Nadu</p>
+                <p><strong>Phone :</strong> +91 95 2608 3012 / +01 222 365</p>
+                <p><strong>Hours :</strong>10:00 - 18:00, Mon - Sat</p>
+                <div class="follow">
+                    <h4>Follow Us</h4>
+                    <div class="icon">
+                        <i class="fab fa-facebook"></i>
+                        <i class="fab fa-twitter"></i>
+                        <i class="fab fa-instagram"></i>
+                        <i class="fab fa-pinterest"></i>
+                        <i class="fab fa-youtube"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <h4>About</h4>
+                <a href="#">About Us</a>
+                <a href="#">Delivery Information</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms & Conditions</a>
+                <a href="#">Contact Us</a>
+                <a href="#">Help</a>
+            </div>
+
+            <div class="col">
+                <h4>My Account</h4>
+                <a href="#">Sign In</a>
+                <a href="#">View Cart</a>
+                <a href="#">My Wishlist</a>
+                <a href="#">Track My Order</a>
+            </div>
+
+            <div class="copyright">
+                <p>© 2022, VIT Vellore - IWP Project</p>
+            </div>
+        </footer>
+        <script>
+            function send(){
+                window.location.replace('/shop');
+            }
+        </script>
+    </body>
+
+</html>

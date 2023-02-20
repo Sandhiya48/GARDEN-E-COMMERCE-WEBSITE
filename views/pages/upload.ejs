@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width-device-width, initial-scale=1.0">
+        <title>Main Page</title>
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
+        <link rel="stylesheet" href="css/style.css">
+        <script src="script.js"></script>
+
+    </head>
+
+    <body>
+
+        <section id="header">
+            <a href="/"><img src="img/logo.png"></a>
+
+           
+            <div>
+                <ul id="navbar">    
+                    <li><a href="/">Home</a></li>
+                    <li><a href="shop">Shop</a></li>
+                    <li><a href="blog">Blog</a></li>
+                    <!-- <li><a href="about">About</a></li> -->
+                    <% if(user){ %>
+                        <li><a href="/logout">Logout</a></li>
+                        <li><a href="history">History</a></li>
+                        <li><a href="upload" class="active" >Upload</a></li>
+                        <li><a readonly><%= user.name %></a></li>
+                    <% }else{ %>
+                    <li><a href="login">Sign-In</a></li>
+                    <% } %>
+                    <li id="lg-bag"><a readonly href="cart.html"><i class="far fa-shopping-basket"></i></li>
+                        <a href ="#" id="close"></a>
+                </ul>
+            </div>
+        </section>
+
+        <section id="page-header">
+            <h2>Product Upload</div></h2>
+            <p></p>
+        </section>
+        
+        <section id="upload">
+
+            <div class="container">
+                <form action="/add" method="post" enctype="multipart/form-data">
+                    <div class="a">
+                    <div><h4>Product Name:</h4>
+                    <input type="text" placeholder="Product Name" name="name" required>
+                    <h4>Seller:</h4>
+                    <input type="text" placeholder="Seller" name="seller" required>
+                    <h4>Category:</h4>
+                    <input type="text" placeholder="Category" name="category" required></div>
+                    <div><h4>Description:</h4>
+                    <textarea name="" id="" cols="70" rows="10" name="desc" required>Description:</textarea></div>
+                    </div>
+                    <div class="a"><div><h4>Cost:</h4>
+                    <input type="text" placeholder="Cost" name="cost" required></div>
+                    <div><h4>Quantity:</h4>
+                    <input type="number" min="1" name="qty" required></div></div>
+                    <div><h4>Images:</h4>
+                    <input type="file" name="img1" required>
+                    <input type="file" name="img2" required>
+                    <input type="file" name="img3" required>
+                    <input type="file" name="img4" required></div>
+                    <button class="normal" type="submit">Upload</button>
+                </form>
+            </div>           
+
+        </section>
+
+        <footer class="section-p1">
+            <div class="col">
+                <img class="logo" src="images/logo.png" alt="">
+                <h4>Contact</h4>
+                <p><strong>Address :</strong> VIT Vellore, Vellore, Tamil Nadu</p>
+                <p><strong>Phone :</strong> +91 95 2608 3012 / +01 222 365</p>
+                <p><strong>Hours :</strong>10:00 - 18:00, Mon - Sat</p>
+                <div class="follow">
+                    <h4>Follow Us</h4>
+                    <div class="icon">
+                        <i class="fab fa-facebook"></i>
+                        <i class="fab fa-twitter"></i>
+                        <i class="fab fa-instagram"></i>
+                        <i class="fab fa-pinterest"></i>
+                        <i class="fab fa-youtube"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <h4>About</h4>
+                <a href="#">About Us</a>
+                <a href="#">Delivery Information</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms & Conditions</a>
+                <a href="#">Contact Us</a>
+                <a href="#">Help</a>
+            </div>
+
+            <div class="col">
+                <h4>My Account</h4>
+                <a href="#">Sign In</a>
+                <a href="#">View Cart</a>
+                <a href="#">My Wishlist</a>
+                <a href="#">Track My Order</a>
+            </div>
+
+            <div class="copyright">
+                <p>© 2022, VIT Vellore - IWP Project</p>
+            </div>
+        </footer>
+
+    </body>
+
+</html>

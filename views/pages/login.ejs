@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width-device-width, initial-scale=1.0">
+        <title>Main Page</title>
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
+        <link rel="stylesheet" href="css/style.css">
+        <script src="js/script.js"></script>
+
+    </head>
+
+    <body>
+
+        <section id="header">
+            <a href="/"><img src="img/logo.png"></a>
+
+            <div>
+                <ul id="navbar">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="shop">Shop</a></li>
+                    <li><a href="blog">Blog</a></li>
+                    <!-- <li><a href="about">About</a></li> -->
+                    <li><a class="active" readonly href="login">Sign-In</a></li>
+                    <li><a href="cart"><i class="far fa-shopping-basket"></i></a></li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="login" class="section-p1">
+            <div class="main">
+                <div class="sign-in" id="bottom">
+                    <form method="post" action="/sign_in">
+                    <span>Username</span>
+                    <input type="text" placeholder="Username" id="uname" name="uname" required>
+                    <span>Password</span>
+                    <input type="password" id="pass" name="pass" required>
+                    <input type="submit" class="submit" value="Login" style="font-size: 12px;
+                    font-weight: 500;
+                    width: 65px;
+                    height: 30px;
+                    padding: 2px 4px;
+                    opacity: 0.6;
+                    transition: 0.4s ease;
+                    margin-top: 9px;
+                    margin-bottom: 18px;
+                    background-color: #80ca10;">
+                    </form>
+                    <p>Dont have an account?</p>
+                    <button class="su normal" id="su"><i>Sign Up</i></button>
+                    </div>
+                <div class="sign-up" id="bottom">
+                    <form action="/sign_up" method="post">
+                    <span>Username</span>
+                    <input type="text" placeholder="Username" id="uname" name="uname" required>
+                    <p></p>
+                    <span>E-mail</span>
+                    <input type="text" placeholder="E-mail ID" id="email" name="email" required>
+                    <p></p>
+                    <span>Password</span>
+                    <input type="password" id="pass" name="pass" pattern="(?=.*\d)(?=.*[A-Z])(?=.*[a-z]).{8,}" required>
+                    <p></p>
+                    <span>Confirm Password</span>
+                    <input type="password" id="pass" required>
+                    <p></p>
+                    <input type="submit" class="submit" value="Sign-Up" style="font-size: 12px;
+                    font-weight: 500;
+                    width: 65px;
+                    height: 30px;
+                    padding: 2px 4px;
+                    opacity: 0.6;
+                    transition: 0.4s ease;
+                    margin-top: 9px;
+                    margin-bottom: 18px;
+                    background-color: #088178;">
+                    <p>Already have an account?</p>
+                    </form>
+                    <button class="si normal" id="si"><i>Sign In</i></button>
+                </div>
+            </div>
+            <div class="trans" id="top"></div>
+        </section>
+
+        <section id="newsletter" class="section-p1 section-m1">
+            <div class="newstext">
+                <h4>Sign Up for NewsLetters</h4>
+                <p>Get E-mail updates about our latest shop and <span>special offers.</span></p>
+            </div>
+            <div class="form">
+                <input type="text" placeholder="Your E-mail address">
+                <button class="normal">Sign Up</button>
+            </div>
+        </section>
+
+        <footer class="section-p1">
+            <div class="col">
+                <img class="logo" src="img/logo.png" alt="">
+                <h4>Contact</h4>
+                <p><strong>Address :</strong> VIT Vellore, Vellore, Tamil Nadu</p>
+                <p><strong>Phone :</strong> +91 95 2608 3012 / +01 222 365</p>
+                <p><strong>Hours :</strong>10:00 - 18:00, Mon - Sat</p>
+                <div class="follow">
+                    <h4>Follow Us</h4>
+                    <div class="icon">
+                        <i class="fab fa-facebook"></i>
+                        <i class="fab fa-twitter"></i>
+                        <i class="fab fa-instagram"></i>
+                        <i class="fab fa-pinterest"></i>
+                        <i class="fab fa-youtube"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <h4>About</h4>
+                <a href="#">About Us</a>
+                <a href="#">Delivery Information</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms & Conditions</a>
+                <a href="#">Contact Us</a>
+                <a href="#">Help</a>
+            </div>
+
+            <div class="col">
+                <h4>My Account</h4>
+                <a href="#">Sign In</a>
+                <a href="#">View Cart</a>
+                <a href="#">My Wishlist</a>
+                <a href="#">Track My Order</a>
+            </div>
+
+            <div class="copyright">
+                <p>© 2022, VIT Vellore - IWP Project</p>
+            </div>
+        </footer>
+
+        <script>
+            var su=document.getElementById("su");
+            var si=document.getElementById("si");
+            var trans=document.getElementById("top");
+            var s=document.getElementById("signup");
+            su.onclick = function(){
+                trans.style.left="406px";
+                trans.style.borderTopLeftRadius = "1pc";
+                trans.style.borderBottomLeftRadius = "1pc";
+                trans.style.borderTopRightRadius = "0";
+                trans.style.borderBottomRightRadius = "0";
+                trans.style.transition = "0.6s ease";
+            };
+            si.onclick = function(){
+                trans.style.left="706px";
+                trans.style.borderTopLeftRadius = "0";
+                trans.style.borderBottomLeftRadius = "0";
+                trans.style.borderTopRightRadius = "1pc";
+                trans.style.borderBottomRightRadius = "1pc";
+            };
+
+        </script>
+
+    </body>
+
+</html>

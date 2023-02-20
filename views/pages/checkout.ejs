@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width-device-width, initial-scale=1.0">
+        <title>Main Page</title>
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
+        <link rel="stylesheet" href="css/style.css">
+        <script src="script.js"></script>
+
+    </head>
+
+    <body>
+
+        <section id="header">
+            <a href="/"><img src="img/logo.png"></a>
+
+           
+            <div>
+                <ul id="navbar">    
+                    <li><a href="/">Home</a></li>
+                    <li><a href="shop">Shop</a></li>
+                    <li><a href="blog">Blog</a></li>
+                    <!-- <li><a href="about">About</a></li> -->
+                    <% if(user){ %>
+                        <li><a href="/logout">Logout</a></li>
+                        <li><a href="history">History</a></li>
+                        <li><a href="upload">Upload</a></li>
+                        <li><a readonly><%= user.name %></a></li>
+                    <% }else{ %>
+                    <li><a href="login">Sign-In</a></li>
+                    <% } %>
+                    <li id="lg-bag"><a class="active" readonly href="cart.html"><i class="far fa-shopping-basket"></i></li>
+                        <a href ="#" id="close"></a>
+                </ul>
+            </div>
+        </section>
+        <form action="/place_order" method="post">
+        <section id="checkout">
+            <div class="address division">
+                <h4>Address Line 1</h4>
+                <h4>Address Line 2</h4>
+                <input type="text" name="add1" placeholder="Address Line 1">
+                <input type="text" name="add2" placeholder="Address Line 2">
+                <h4>Phone No</h4>
+                <h4>PINCODE</h4>
+                <input type="text" name="pno" placeholder="Phone Number">
+                <input type="text" name="pin" placeholder="Pincode">
+                <h4>City</h4>
+                <h4>State</h4>
+                <input type="text" name="city" placeholder="City">
+                <input type="text" name="state" placeholder="State">
+                <button class="normal"><a href="cart" style="text-decoration:none;color: white;">Go Back</a></button>
+
+            </div>
+            <div class="summary division">
+                <h4>Summary</h4>
+                <h6>The total cost consists of the tax and the shipping charge.</h6>
+                <p>_________________________________________________</p>
+                <br>
+                <div class="bill">
+                <p>Bill</p>
+                <p>$ <%= total %></p>
+                </div>
+                <br><br>
+                <div class="bill">
+                <p>Tax</p>
+                <p>$ <%= total*3/100 %></p>
+                </div>
+                <br><br>
+                <div class="bill">
+                <p>Total</p>
+                <p>$ <%= total*1.03 %></p>
+                <input type="hidden" name="final" value="<%= total*1.03 %>">
+                </div>
+                <br><p>_________________________________________________</p><br>
+                <center><button class="normal" type="submit">Next</button></center>
+            </div>
+        </section>
+        </form>
+
+        <footer class="section-p1">
+            <div class="col">
+                <img class="logo" src="images/logo.png" alt="">
+                <h4>Contact</h4>
+                <p><strong>Address :</strong> VIT Vellore, Vellore, Tamil Nadu</p>
+                <p><strong>Phone :</strong> +91 95 2608 3012 / +01 222 365</p>
+                <p><strong>Hours :</strong>10:00 - 18:00, Mon - Sat</p>
+                <div class="follow">
+                    <h4>Follow Us</h4>
+                    <div class="icon">
+                        <i class="fab fa-facebook"></i>
+                        <i class="fab fa-twitter"></i>
+                        <i class="fab fa-instagram"></i>
+                        <i class="fab fa-pinterest"></i>
+                        <i class="fab fa-youtube"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <h4>About</h4>
+                <a href="#">About Us</a>
+                <a href="#">Delivery Information</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms & Conditions</a>
+                <a href="#">Contact Us</a>
+                <a href="#">Help</a>
+            </div>
+
+            <div class="col">
+                <h4>My Account</h4>
+                <a href="#">Sign In</a>
+                <a href="#">View Cart</a>
+                <a href="#">My Wishlist</a>
+                <a href="#">Track My Order</a>
+            </div>
+
+            <div class="copyright">
+                <p>© 2022, VIT Vellore - IWP Project</p>
+            </div>
+        </footer>
+
+    </body>
+
+</html>
